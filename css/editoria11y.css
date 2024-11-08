@@ -315,6 +315,11 @@ ed11y-element-result {
     align-self: center;
 }
 
+#ed11y-issues-counter {
+    font-style: italic;
+    font-size: 12px;
+}
+
 #ed11y-headings-tab, #ed11y-alts-tab {
     max-height: max(240px, 50vh);
     overflow: auto;
