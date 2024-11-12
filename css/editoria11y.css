@@ -103,7 +103,7 @@ ed11y-element-result {
 }
 
 .ed11y-panel-wrapper .content {
-    padding: 4px 4px 4px 12px;
+    padding: 12px 12px 4px 12px;
     border: var(--ed11y-panelBorder, 0) solid var(--ed11y-primary, #276499);
     border-top: 0;
     border-radius: 0 0 var(--ed11y-borderRadius, 1) var(--ed11y-borderRadius, 1);
