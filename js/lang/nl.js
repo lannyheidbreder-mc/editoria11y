@@ -13,6 +13,7 @@ ed11yLang['nl'] = {
   panelCountMultiple: ' problemen.',
   panelCountBase: '<span class=\'count\'>Geen</span> <span class=\'content-type\'>toegankelijkheidsfouten gedetecteerd</span>.',
   panelControls: 'Editorially panel controls',
+  panelCurrentIssue: (count, total) => `Probleem ${count}/${total}`,
   buttonIssuesContent: 'Problemen',
   buttonOutlineContent: 'Structuur',
   buttonAltsContent: 'Alt-tekst',
@@ -46,7 +47,7 @@ ed11yLang['nl'] = {
   suspiciousWords: ['afbeelding van','beeld van','tekening van','foto van','plaatshouder','foto van'],
   linksUrls: ['http:/', 'https:/', '.asp', '.htm', '.php', '.edu/', '.com/', '.nl/'],
   linksMeaningless: /leer|meer|klik|hier|op|deze|link|nu|this|bladzijde|webpagina|website|bekijk|\.|,|:|downloaden|het|formulier|webformulier|>|<|\s/g,
-  
+
   // Tooltips base ======================================
 
   toggleManualCheck: 'handmatige controle nodig',
@@ -89,7 +90,7 @@ ed11yLang['nl'] = {
 
   headingEmpty : {
     title: 'Hoofding tag zonder enige tekst',
-    tip: () => 
+    tip: () =>
       `<p>Hoofdings en subniveaus creëren een navigeerbare inhoudsopgave voor hulpmiddelen. Het <strong><em>nummer</em></strong> van de hoofding geeft de <strong><em>diepte</em></strong aan > in het paginaoverzicht; bijv.:</p>
       ${Ed11y.M.headingExample}
       <p>"Lege" hoofdings zorgen voor verwarrende hiaten in dit overzicht: ze kunnen betekenen dat de volgende inhoud nog steeds deel uitmaakt van de vorige sectie, of dat de tekst om de een of andere reden onuitspreekbaar was.</p>
@@ -105,7 +106,7 @@ ed11yLang['nl'] = {
       <p><strong>Oplossen:</strong> verkort deze hoofding indien mogelijk, of verwijder de hoofdingstijl als deze alleen op deze tekst werd toegepast om visuele nadruk te leggen.</p>
       `,
   },
-          
+
   blockquoteIsShort : {
     title: 'Handmatige controle: is dit een blockquote?',
     tip: () =>
@@ -114,7 +115,7 @@ ed11yLang['nl'] = {
 
   // Tooltips for image tests =========================
 
-  altAttributeExample : 
+  altAttributeExample :
           `<p>Houd er rekening mee dat een goede alt weergeeft wat een afbeelding <strong>communiceert</strong>, niet wat het <strong>bevat</strong>. Een foto van een kind dat tegen een bal trapt, is mogelijk geselecteerd vanwege de instelling , het kind, de trap of de bal:</p>
           <ul>
               <li>Kind schopt vrolijk tegen een bal op een zomerse dag</li>
@@ -122,8 +123,8 @@ ed11yLang['nl'] = {
               <li>A.J.'s spel-winnende trap kwam binnen vanaf de linkerzijlijn!</li>
               <li>De bal "medium" heeft de juiste maat voor dit 9-jarige kind</li>
           </ul>`,
-      
-  altAttributeProvided: (alt) => 
+
+  altAttributeProvided: (alt) =>
     `<p>De alternatieve tekst van deze afbeelding is: <strong>${alt}</strong></p>`,
 
   altMissing : {
@@ -188,7 +189,7 @@ ed11yLang['nl'] = {
     title: 'Het tekstalternatief van de afbeelding is onuitspreekbaar',
     tip: (alt) =>
       `<p>De alt van deze afbeelding bevat alleen tekens die niet door schermlezers worden uitgesproken. De aanwezigheid van een afbeelding wordt aangekondigd, maar de beschrijving ervan is onbegrijpelijk.</p>
-      <p>Oplossen: voeg een beschrijvende alt toe of geef een <em>volledig</em> lege alt (alt="") om schermlezers te vertellen deze afbeelding te negeren.</p>      
+      <p>Oplossen: voeg een beschrijvende alt toe of geef een <em>volledig</em> lege alt (alt="") om schermlezers te vertellen deze afbeelding te negeren.</p>
           ${Ed11y.M.altAttributeExample}
           ${Ed11y.M.altAttributeProvided(alt)}`,
   },
@@ -238,7 +239,7 @@ ed11yLang['nl'] = {
 
   altPartOfLinkWithText : {
     title: 'Handmatige controle: link bevat zowel tekst als een afbeelding',
-    tip: (alt) => 
+    tip: (alt) =>
       `<p>Als een link een afbeelding bevat, spreken schermlezers de alt-tekst van de afbeelding uit als onderdeel van de link. Dit kan verwarrend zijn als de alt van de afbeelding de afbeelding beschrijft in plaats van de link.</p>
       <p>Voor een link in kaartstijl met zowel tekst als een stockfoto, vergelijk:</p>
       <ul>
@@ -261,7 +262,7 @@ ed11yLang['nl'] = {
 
   linkTextIsURL : {
     title: 'Handmatige controle: is deze linktekst een URL?',
-    tip: (text) => 
+    tip: (text) =>
       `<p>Links moeten zinvol en beknopt zijn. Lezers bladeren vaak door titels van links. Dit geldt met name voor gebruikers van schermlezers, die navigeren met behulp van een lijst met links op de pagina.</p>\
         <p>Een gekoppelde URL doorbreekt dit patroon; de lezer moet de voorgaande alinea lezen om het doel van de link uit de context te achterhalen.</p>
         <ul>
@@ -274,7 +275,7 @@ ed11yLang['nl'] = {
 
   linkTextIsGeneric : {
     title: 'Handmatige controle: is deze link zinvol en beknopt?',
-    tip: (text) => 
+    tip: (text) =>
       `<p>Lezers zoeken snel naar links. Dit geldt met name voor gebruikers van schermlezers, die navigeren met behulp van een lijst met links op de pagina.</p>
       <p>Algemene links zoals "klik hier," "lees meer" of "download" verwachten dat de lezer langzaam en zorgvuldig leest, zodat ze het doel van elke link uit de context voor zichzelf kunnen achterhalen. doe dit, zodat de klikfrequenties op nietszeggende links extreem laag zijn.</p>
       <ul>
@@ -288,7 +289,7 @@ ed11yLang['nl'] = {
 
   linkDocument : {
     title : 'Handmatige controle: is het gekoppelde document toegankelijk?',
-    tip: () => 
+    tip: () =>
       `<p>Deze geautomatiseerde controle zorgt ervoor dat <strong><em>websites</em></strong> de functies bevatten die nodig zijn voor toegankelijke inhoud, zaken als kopstructuur en tekstalternatieven voor afbeeldingen en audio. <strong>Het is niet in staat om u te helpen bij het controleren van de documenten die u linkt.</strong></p>
       <p>De meeste gebruikers van mobiele apparaten en ondersteunende apparaten lezen liever tekst op webpagina's, waar de inhoud opnieuw wordt weergegeven om op het scherm te passen. Als het hier gelinkte document niet kan worden geconverteerd naar een webpagina, controleer dan handmatig de structuur (koppen, lijsten, tabel headers) en afbeelding alt-tekst.</p>
       <ul>
@@ -301,15 +302,15 @@ ed11yLang['nl'] = {
 
   linkNewWindow : {
     title: 'Handmatige controle: wordt een nieuw venster verwacht?',
-    tip: () => 
-      `<p>Lezers kunnen er altijd voor kiezen om een link in een nieuw venster te openen. Wanneer een link een nieuw venster forceert, 
+    tip: () =>
+      `<p>Lezers kunnen er altijd voor kiezen om een link in een nieuw venster te openen. Wanneer een link een nieuw venster forceert,
       kan dit verwarrend en vervelend zijn, vooral voor gebruikers van hulpmiddelen die zich afvragen waarom de "terug" knop van hun browser is plotseling uitgeschakeld.</p>
       <p>Er zijn twee algemene uitzonderingen:</p>
       <ul>
        <li>Als de gebruiker een formulier invult en een link in hetzelfde venster opent, zou hij zijn werk kwijtraken.</li>
        <li>Als de gebruiker duidelijk wordt gewaarschuwd, wordt er een link geopend in een nieuw venster.</li>
       </ul>
-      <p>Oplossen: zet deze link terug op zijn standaarddoel, of voeg een waarschuwing toe die toegankelijk is voor de schermlezer (tekst of een pictogram met alternatieve tekst).</p>      
+      <p>Oplossen: zet deze link terug op zijn standaarddoel, of voeg een waarschuwing toe die toegankelijk is voor de schermlezer (tekst of een pictogram met alternatieve tekst).</p>
               `
     ,
   },
@@ -330,7 +331,7 @@ ed11yLang['nl'] = {
 
   tableContainsContentHeading : {
     title: 'Contentkop in een tabel',
-    tip: () => 
+    tip: () =>
       `<p>Inhoudskoppen ("Kop 1", "Kop 2") vormen een navigeerbare inhoudsopgave voor gebruikers van schermlezers, waarin alle inhoud <strong>tot de volgende kop</strong> wordt gelabeld. specifieke kolommen of rijen binnen een tabel.</p>
       <p></p>
       <table>
@@ -350,7 +351,7 @@ ed11yLang['nl'] = {
 
   textPossibleList : {
     title: 'Handmatige controle: moet deze lijstindeling hebben?',
-    tip : (text) => 
+    tip : (text) =>
       `<p>Lijstopmaak is structureel:</p>
       <ol>
        <li>Lijst opmaak inspringingen en opnieuw plaatsen bij overloop. Tekst wordt verticaal uitgelijnd met tekst, in plaats van de "${text}"</li>
@@ -363,7 +364,7 @@ ed11yLang['nl'] = {
 
   textPossibleHeading : {
     title: 'Handmatige controle: moet dit een kop zijn?',
-    tip : () => 
+    tip : () =>
       `<p>Koppen en subkoppen creëren een navigeerbare inhoudsopgave voor hulpmiddelen. Het <strong><em>nummer</em></strong> van de kop geeft de <strong> ><em>diepte</em></strong> in het paginaoverzicht; bijv.:</p>
       ${Ed11y.M.headingExample}
       <p>Als deze vetgedrukte tekst visueel als kop fungeert, vervang dan de vetgedrukte opmaak door de correct genummerde kop.</p>
@@ -372,7 +373,7 @@ ed11yLang['nl'] = {
 
   textUppercase : {
     title: 'Handmatige controle: is deze tekst in hoofdletters nodig?',
-    tip : () => 
+    tip : () =>
       `<p>TEKST IN HOOFDLETTERS KAN VOOR VEEL MENSEN MOEILIJKER TE LEZEN ZIJN, EN WORDT VAAK INTERPRETEERD ALS SCHREEUWEN.</p>
       <p>Overweeg om in plaats daarvan hoofdletters te gebruiken en vetgedrukte tekst of lettertypewijzigingen te gebruiken voor visuele nadruk, of structurele opmaak zoals koppen voor nadruk die ook worden aangekondigd door schermlezers.</p>
       `,
@@ -380,7 +381,7 @@ ed11yLang['nl'] = {
 
   embedVideo : {
     title: 'Handmatige controle: is deze tekst in hoofdletters nodig?',
-    tip : () => 
+    tip : () =>
       `<p>Als een opgenomen video spraak of betekenisvolle geluiden bevat, moet deze voorzien zijn van ondertiteling.</p>
       <p>Houd er rekening mee dat automatische, machinaal gegenereerde bijschriften moeten worden nagelezen en sprekeridentificaties moeten worden toegevoegd voordat ze als een gelijkwaardig alternatief worden beschouwd.</p>
       `,
@@ -388,7 +389,7 @@ ed11yLang['nl'] = {
 
   embedAudio : {
     title: 'Handmatige controle: is er een nauwkeurige transcriptie voorzien?',
-    tip : () => 
+    tip : () =>
       `<p>Als deze audio spraak bevat, moet op deze pagina een tekstalternatief worden verstrekt of moet worden gelinkt.</p>
       <p>Houd er rekening mee dat automatische, machinaal gegenereerde transcripties moeten worden nagelezen en sprekersidentificaties moeten worden toegevoegd voordat ze als een gelijkwaardig alternatief worden beschouwd</p>
       `,
@@ -396,15 +397,15 @@ ed11yLang['nl'] = {
 
   embedVisualization : {
     title: 'Handmatige controle: is deze visualisatie toegankelijk?',
-    tip : () => 
+    tip : () =>
       `<p>Visualisatie-widgets zijn vaak moeilijk of onmogelijk te bedienen voor hulpmiddelen en kunnen moeilijk te begrijpen zijn voor lezers met slechtziendheid of kleurenblindheid.</p>
-        <p>Tenzij deze specifieke widget een hoog visueel contrast heeft, kan worden bediend met een toetsenbord en kan worden beschreven door een schermlezer, moet u ervan uitgaan dat er ook een alternatief formaat (tekstbeschrijving, gegevenstabel of downloadbare spreadsheet) moet worden verstrekt.</p> 
+        <p>Tenzij deze specifieke widget een hoog visueel contrast heeft, kan worden bediend met een toetsenbord en kan worden beschreven door een schermlezer, moet u ervan uitgaan dat er ook een alternatief formaat (tekstbeschrijving, gegevenstabel of downloadbare spreadsheet) moet worden verstrekt.</p>
       `,
   },
 
   embedTwitter : {
     title: 'Manual check: is this embed a keyboard trap?',
-    tip : () => 
+    tip : () =>
       `<p>Als ingesloten feeds zijn ingesteld om een groot aantal items weer te geven, moeten toetsenbordgebruikers mogelijk tientallen of honderden keren op de tab-toets klikken om het onderdeel te verlaten.</p>
         <p>Controleer of slechts een klein aantal items onmiddellijk of tijdens het scrollen automatisch wordt geladen. Extra items op verzoek laden ("meer weergeven") is prima.</p>
       `,
@@ -412,7 +413,7 @@ ed11yLang['nl'] = {
 
   embedCustom : {
     title: 'Handmatige controle: is deze ingesloten inhoud toegankelijk?',
-    tip : () => 
+    tip : () =>
       '<p>Zorg ervoor dat afbeeldingen in deze insluiting alt-tekst hebben, video\'s bijschriften hebben en dat interactieve componenten <a href=\'https://webaim.org/techniques/keyboard/\'>worden bediend door een toetsenbord</a>.</p>',
   }
 

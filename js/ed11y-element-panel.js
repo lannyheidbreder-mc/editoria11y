@@ -23,6 +23,10 @@ class Ed11yElementPanel extends HTMLElement {
       <button type='button' id='ed11y-toggle'><span class='close'>&times;</span><span class='open'><span class='icon'></span><span class='toggle-count'></span></span></button>
     </div>
     <div class="content">
+      <div id='ed11y-issues-counter'>
+          <div class='issue-counter'></div>
+          <div class='content-alert'></div>
+      </div>
       <div id='ed11y-issues-tab' tabindex="0" role="tabpanel" class="show" aria-labelledby='ed11y-issues'>
           <div>
               <div class='content-text'>${Ed11y.M.panelCountBase}</div>
@@ -62,7 +66,10 @@ class Ed11yElementPanel extends HTMLElement {
       Ed11y.panel = wrapper;
       Ed11y.panelToggle = wrapper.querySelector('#ed11y-toggle');
       Ed11y.panelMessage = wrapper.querySelector('.content-text');
+      Ed11y.panelAlert = wrapper.querySelector('.content-alert');
+      Ed11y.issueCounter = wrapper.querySelector('.issue-counter');
       Ed11y.panelCount = wrapper.querySelector('.count');
+      Ed11y.currentItem = 0;
       Ed11y.panelJumpNext = wrapper.querySelector('.ed11y-jump.next');
       Ed11y.panelJumpPrev = wrapper.querySelector('.ed11y-jump.prev');
       Ed11y.panelJumpNext.addEventListener('click', this.jumpTo);
@@ -97,6 +104,9 @@ class Ed11yElementPanel extends HTMLElement {
 
     // Open the button
     goto.setAttribute('data-ed11y-action','open');
+
+    // Set counter
+    Ed11y.issueCounter.innerHTML = Ed11y.M.panelCurrentIssue((goNum + 1), Ed11y.totalCount);
 
     let gotoResult = Ed11y.results[goto.getAttribute('data-ed11y-result')];
     let insert = gotoResult.position;
@@ -137,8 +147,9 @@ class Ed11yElementPanel extends HTMLElement {
         firstVisible = firstVisible.closest(':not([aria-hidden="true"])');
         alertMessage = Ed11y.M.jumpedToAriaHiddenTip;
       }
+      Ed11y.panelAlert.innerHTML = '';
       if (firstVisible) {
-        alert(alertMessage);
+        Ed11y.panelAlert.innerHTML = alertMessage;
         firstVisible.classList.add('ed11y-hidden-highlight');
       }
       goto.scrollIntoView({ block: 'center' });
