@@ -106,7 +106,7 @@ class Ed11yElementPanel extends HTMLElement {
     goto.setAttribute('data-ed11y-action','open');
 
     // Set counter
-    Ed11y.issueCounter.innerHTML = 'Issue ' + (goNum + 1) + '/' + Ed11y.totalCount;
+    Ed11y.issueCounter.innerHTML = Ed11y.M.panelCurrentIssue((goNum + 1), Ed11y.totalCount);
 
     let gotoResult = Ed11y.results[goto.getAttribute('data-ed11y-result')];
     let insert = gotoResult.position;

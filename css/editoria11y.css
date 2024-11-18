@@ -317,7 +317,7 @@ ed11y-element-result {
 
 #ed11y-issues-counter {
     font-style: italic;
-    font-size: 12px;
+    font-size: 0.75em;
 }
 
 #ed11y-headings-tab, #ed11y-alts-tab {

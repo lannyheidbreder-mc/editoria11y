@@ -15,6 +15,7 @@ const ed11yLang = {
     panelCountMultiple: ' issues detected.',
     panelCountBase: '<span class=\'count\'>No</span> <span class=\'content-type\'>issues detected</span>.',
     panelControls: 'Editorially panel controls',
+    panelCurrentIssue: (count, total) => `Issue ${count}/${total}`,
     buttonIssuesContent: 'Issues',
     buttonOutlineContent: 'Outline',
     buttonAltsContent: 'Alt Text',
@@ -108,7 +109,7 @@ const ed11yLang = {
     headingIsLong : {
       title: 'Manual check: long heading',
       tip: () =>
-        `<p>Headings should be brief and clear. Assistive devices use them to create a navigable table of contents for the page. The heading's <strong><em>number</em></strong> indicates its <strong><em>depth</em></strong> in the page outline; e.g.:</p>  
+        `<p>Headings should be brief and clear. Assistive devices use them to create a navigable table of contents for the page. The heading's <strong><em>number</em></strong> indicates its <strong><em>depth</em></strong> in the page outline; e.g.:</p>
             ${Ed11y.M.headingExample}
             <p><strong>To fix:</strong> shorten this heading if possible, or remove the heading style if it was only applied to this text to provide visual emphasis.</p>
             `,
@@ -194,7 +195,7 @@ const ed11yLang = {
       title: 'Manual check: possibly redundant text in alt',
       tip: (alt) =>
         `${Ed11y.M.altAttributeProvided(alt)}
-        <p>Screen readers <strong>announce</strong> they are describing an image when reading alt text, so 
+        <p>Screen readers <strong>announce</strong> they are describing an image when reading alt text, so
             phrases like "image of" and "photo of" are usually redundant, sounding like "this image's alt is the alt of an image."</p>
             <p>Note that sometimes the phrase is not redundant and should be kept, because the image is an image of an image:</p>
             <ul><li>Redundant: "image of a VHS tape"</li>
@@ -338,8 +339,8 @@ const ed11yLang = {
     tableContainsContentHeading : {
       title: 'Content heading inside a table',
       tip: () =>
-        `<p>Content headings ("Heading 1", "Heading 2") form a navigable table of contents for screen reader users,  
-        labelling all content <strong>until the next heading</strong>. Table headers label specific columns or rows within a table.</p> 
+        `<p>Content headings ("Heading 1", "Heading 2") form a navigable table of contents for screen reader users,
+        labelling all content <strong>until the next heading</strong>. Table headers label specific columns or rows within a table.</p>
             <p></p>
             <table><tr><th>1</th><th>2</th><th>3</th><td rowspan="2">To illustrate: a <strong>table</strong> header in cell 2 would only label its column: cell B. <br><br>
             A <strong>content</strong> heading in cell 2 would label all subsequent text, reading from left to right: cells 3, A, B and C, as well as this text!</td></tr>
@@ -351,7 +352,7 @@ const ed11yLang = {
     tableEmptyHeaderCell : {
       title: 'Empty table header cell',
       tip: () => `
-                <p>When exploring tables, screen readers repeat table header cells as needed to orient users. 
+                <p>When exploring tables, screen readers repeat table header cells as needed to orient users.
                 Without headers, it is very easy to get lost; screen reader users have to count columns and rows and try to remember which columns went with which rows.</p>
                 <p>To fix: make sure each header cell in this table contains text.</p>
             `,
@@ -360,7 +361,7 @@ const ed11yLang = {
     textPossibleList : {
       title: 'Manual check: should this have list formatting?',
       tip : (text) =>
-        `<p>List formatting is structural:</p> 
+        `<p>List formatting is structural:</p>
             <ol><li>List formatting indents and reflows on overflow. Text aligns vertically with the line above it.</li>
             <li>Lists are machine-readable. Screen readers can orient their users, announcing this as "list item, 2 of 3."</li></ol>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;3. But this third item is just a sentence with a number in front of it. It wraps incorrectly, and screen readers do not know it is related to the other items in the list.</p>
